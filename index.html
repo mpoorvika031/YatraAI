@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yātrā — AI-Powered Travel Intelligence</title>
+  <meta name="description" content="Yātrā is your intelligent travel companion. Plan bespoke journeys powered by AI, crafted for the curious soul." />
+
+  <!-- Fonts: Cormorant Garamond (display) + Jost (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════ LOADER ══════════════════════ -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__symbol">यात्रा</div>
+      <div class="loader__bar"><div class="loader__fill" id="loaderFill"></div></div>
+      <div class="loader__hint" id="loaderHint">Preparing your journey...</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ NAV ══════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <a class="nav__logo" href="#hero">
+      <span class="nav__logo-symbol">✦</span>
+      <span class="nav__logo-name">Yātrā<em>AI</em></span>
+    </a>
+
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#planner" class="nav__link">Planner</a></li>
+      <li><a href="#destinations" class="nav__link">Destinations</a></li>
+      <li><a href="#discover" class="nav__link">Discover</a></li>
+      <li><a href="#dashboard" class="nav__link">Dashboard</a></li>
+    </ul>
+
+    <button class="nav__cta" onclick="document.getElementById('planner').scrollIntoView({behavior:'smooth'})">
+      Start Journey
+    </button>
+
+    <button class="nav__burger" id="navBurger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="navDrawer">
+    <ul>
+      <li><a href="#planner" class="nav__drawer-link">Planner</a></li>
+      <li><a href="#destinations" class="nav__drawer-link">Destinations</a></li>
+      <li><a href="#discover" class="nav__drawer-link">Discover</a></li>
+      <li><a href="#dashboard" class="nav__drawer-link">Dashboard</a></li>
+    </ul>
+  </div>
+
+  <!-- ══════════════════════ HERO ══════════════════════ -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas" class="hero__canvas"></canvas>
+
+    <!-- Ambient orbs -->
+    <div class="orb orb--saffron"></div>
+    <div class="orb orb--teal"></div>
+    <div class="orb orb--rose"></div>
+
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">
+        <span class="hero__eyebrow-dot"></span>
+        AI-Powered Travel Intelligence
+      </div>
+
+      <h1 class="hero__heading">
+        <span class="hero__line reveal" style="--d:0.1s">Where will</span>
+        <span class="hero__line hero__line--accent reveal" style="--d:0.25s">your soul wander</span>
+        <span class="hero__line reveal" style="--d:0.4s">next?</span>
+      </h1>
+
+      <p class="hero__sub reveal" style="--d:0.55s">
+        Your intelligent travel companion that learns your style, crafts bespoke itineraries,
+        and turns wanderlust into reality — inspired by the spirit of <em>Yātrā</em>, the sacred journey.
+      </p>
+
+      <!-- Search bar -->
+      <div class="hero__search reveal" style="--d:0.7s">
+        <span class="hero__search-icon">🌏</span>
+        <input
+          type="text"
+          id="heroSearch"
+          class="hero__search-input"
+          placeholder="Search a destination — Santorini, Kyoto, Maldives..."
+          autocomplete="off"
+        />
+        <button class="hero__search-btn" id="heroSearchBtn">
+          Explore
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="hero__dropdown" id="heroDropdown"></div>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero__stats reveal" style="--d:0.85s">
+        <div class="hero__stat">
+          <span class="hero__stat-n" data-target="12400">0</span>
+          <span class="hero__stat-l">Trips Planned</span>
+        </div>
+        <div class="hero__stat-sep"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-n" data-target="184">0</span>
+          <span class="hero__stat-l">Destinations</span>
+        </div>
+        <div class="hero__stat-sep"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-n" data-target="98">0</span>
+          <span class="hero__stat-l">% Satisfaction</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating destination cards -->
+    <div class="hero__float-cards">
+      <div class="hero__float-card hero__float-card--1">
+        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=200&q=80" alt="Santorini" />
+        <div class="hero__float-card-label">Santorini ✦ 4.9</div>
+      </div>
+      <div class="hero__float-card hero__float-card--2">
+        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=200&q=80" alt="Kyoto" />
+        <div class="hero__float-card-label">Kyoto ✦ 4.8</div>
+      </div>
+      <div class="hero__float-card hero__float-card--3">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=80" alt="Maldives" />
+        <div class="hero__float-card-label">Maldives ✦ 4.9</div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <div class="hero__scroll-line"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ ABOUT / INTRO ══════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__left">
+          <div class="section-tag reveal">About Yātrā</div>
+          <h2 class="section-title reveal">Travel, Elevated<br/>by Intelligence</h2>
+          <p class="about__body reveal">
+            <em>Yātrā</em> (यात्रा) — a Sanskrit word meaning journey, pilgrimage, the sacred act of moving through the world with intention. We fused this timeless spirit with cutting-edge AI to create the most intuitive travel planning experience ever built.
+          </p>
+          <p class="about__body reveal">
+            From hidden Himalayan valleys to Amalfi sunsets, our AI understands not just where you want to go — but who you are when you travel.
+          </p>
+          <div class="about__badges reveal">
+            <div class="about__badge">🧠 AI-Curated</div>
+            <div class="about__badge">🌿 Sustainable</div>
+            <div class="about__badge">✦ Premium</div>
+            <div class="about__badge">🔒 Private</div>
+          </div>
+        </div>
+        <div class="about__right reveal">
+          <div class="about__image-stack">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=500&q=80" alt="Patagonia" class="about__img about__img--back" />
+            <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6b?w=500&q=80" alt="Marrakech" class="about__img about__img--front" />
+            <div class="about__img-badge">
+              <span class="about__img-badge-num">50K+</span>
+              <span class="about__img-badge-text">Happy Travelers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FEATURES ══════════════════════ -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal">Why Yātrā</div>
+        <h2 class="section-title reveal">Every Journey Deserves<br/>Extraordinary Planning</h2>
+      </div>
+      <div class="features__grid">
+        <div class="feature-card reveal" style="--d:0s">
+          <div class="feature-card__icon">🧠</div>
+          <h3>AI Itinerary Builder</h3>
+          <p>Tell us your style, budget, and duration. Our AI crafts a perfect day-by-day itinerary in seconds.</p>
+        </div>
+        <div class="feature-card reveal" style="--d:0.1s">
+          <div class="feature-card__icon">🗺️</div>
+          <h3>Smart Destination Matching</h3>
+          <p>We analyze 50,000+ traveler profiles to surface destinations that resonate with your personality.</p>
+        </div>
+        <div class="feature-card reveal" style="--d:0.2s">
+          <div class="feature-card__icon">💰</div>
+          <h3>Budget Intelligence</h3>
+          <p>Real-time price tracking, budget breakdowns, and cost-optimization suggestions — so you spend smart.</p>
+        </div>
+        <div class="feature-card reveal" style="--d:0.3s">
+          <div class="feature-card__icon">🌤️</div>
+          <h3>Weather & Timing</h3>
+          <p>Hyper-local weather forecasts and seasonal insights ensure you visit at the perfect moment.</p>
+        </div>
+        <div class="feature-card reveal" style="--d:0.1s">
+          <div class="feature-card__icon">🤖</div>
+          <h3>24/7 AI Companion</h3>
+          <p>Your personal travel assistant is always on — answering questions, adjusting plans, never sleeping.</p>
+        </div>
+        <div class="feature-card reveal" style="--d:0.2s">
+          <div class="feature-card__icon">🌿</div>
+          <h3>Sustainable Travel</h3>
+          <p>Every recommendation considers eco-impact. Travel beautifully, leave the world better than you found it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ PLANNER ══════════════════════ -->
+  <section class="planner" id="planner">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal">AI Planner</div>
+        <h2 class="section-title reveal">Craft Your Perfect Journey</h2>
+        <p class="section-sub reveal">Tell our AI what you dream of — we'll handle every detail.</p>
+      </div>
+
+      <div class="planner__layout">
+        <!-- Form -->
+        <div class="planner__form glass-card reveal">
+
+          <div class="form-group">
+            <label class="form-label"><span>📍</span> Destination</label>
+            <div class="form-input-wrap">
+              <input type="text" class="form-input" id="destInput" placeholder="Paris, Bali, Kyoto..." autocomplete="off" />
+              <div class="form-suggestions" id="destSuggestions"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label"><span>📅</span> Departure</label>
+              <input type="date" class="form-input" id="departDate" />
+            </div>
+            <div class="form-group">
+              <label class="form-label"><span>📅</span> Return</label>
+              <input type="date" class="form-input" id="returnDate" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              <span>💰</span> Budget
+              <span class="form-label-val" id="budgetLabel">$3,000</span>
+            </label>
+            <div class="slider-wrap">
+              <input type="range" class="form-slider" id="budgetSlider" min="500" max="15000" step="100" value="3000" />
+              <div class="slider-track"><div class="slider-fill" id="sliderFill"></div></div>
+              <div class="slider-ends"><span>$500</span><span>$15,000</span></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><span>✨</span> Interests</label>
+            <div class="chips" id="interestChips"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><span>👥</span> Travelers</label>
+            <div class="travelers">
+              <button class="travelers__btn" id="travMinus">−</button>
+              <span class="travelers__num" id="travCount">2</span>
+              <button class="travelers__btn" id="travPlus">+</button>
+              <span class="travelers__lbl">Adults</span>
+            </div>
+          </div>
+
+          <button class="gen-btn" id="generateBtn">
+            <span class="gen-btn__text">
+              <span class="gen-btn__icon">✦</span>
+              Generate My Journey
+            </span>
+          </button>
+
+        </div>
+
+        <!-- Preview panel -->
+        <div class="planner__preview">
+          <div class="planner__preview-card glass-card" id="previewCard">
+            <div class="preview-skeleton" id="previewSkeleton">
+              <div class="sk-line sk-line--title"></div>
+              <div class="sk-line sk-line--sub"></div>
+              <div class="sk-block"></div>
+              <div class="sk-line"></div>
+              <div class="sk-line sk-line--short"></div>
+              <div class="sk-line"></div>
+            </div>
+            <div class="preview-content" id="previewContent" style="display:none">
+              <div class="preview-dest" id="previewDest">Santorini, Greece</div>
+              <div class="preview-meta" id="previewMeta">5 Days · 2 Adults · $2,400</div>
+              <div class="preview-img-wrap">
+                <img class="preview-img" id="previewImg" src="" alt="" />
+              </div>
+              <div class="preview-highlights" id="previewHighlights"></div>
+            </div>
+          </div>
+
+          <div class="ai-tip glass-card">
+            <div class="ai-tip__head">
+              <div class="ai-tip__avatar">✦</div>
+              <div>
+                <div class="ai-tip__name">Yātrā AI</div>
+                <div class="ai-tip__status"><span class="status-dot"></span>Online</div>
+              </div>
+            </div>
+            <div class="ai-tip__msg" id="aiTipMsg">
+              <span class="cursor" id="tipCursor">|</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ ITINERARY ══════════════════════ -->
+  <section class="itinerary" id="itinerary">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal">Generated Itinerary</div>
+        <h2 class="section-title reveal">Your Santorini Odyssey</h2>
+        <p class="section-sub reveal">Crafted by AI, tailored to your taste.</p>
+      </div>
+      <div class="itinerary__days" id="itineraryDays">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ DESTINATIONS ══════════════════════ -->
+  <section class="destinations" id="destinations">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal">Popular Picks</div>
+        <h2 class="section-title reveal">Destinations Worth<br/>Dreaming About</h2>
+        <p class="section-sub reveal">Curated by AI from millions of traveler experiences.</p>
+      </div>
+
+      <div class="dest__carousel-wrap">
+        <button class="dest__nav dest__nav--prev" id="destPrev" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3L5 9l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dest__carousel" id="destCarousel">
+          <!-- Populated by JS -->
+        </div>
+        <button class="dest__nav dest__nav--next" id="destNext" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 3l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="dest__dots" id="destDots"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ DISCOVER / RECS ══════════════════════ -->
+  <section class="discover" id="discover">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal">AI Discoveries</div>
+        <h2 class="section-title reveal">Hidden Gems,<br/>Picked Just For You</h2>
+        <p class="section-sub reveal">Our AI surfaces places most travelers never find.</p>
+      </div>
+      <div class="discover__grid" id="discoverGrid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ DASHBOARD ══════════════════════ -->
+  <section class="dashboard" id="dashboard">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag reveal">Trip Dashboard</div>
+        <h2 class="section-title reveal">Your Santorini Overview</h2>
+        <p class="section-sub reveal">Everything you need, at a single glance.</p>
+      </div>
+
+      <div class="dash__grid">
+
+        <div class="dash-card glass-card reveal">
+          <div class="dash-card__label">Budget Breakdown</div>
+          <div class="dash-card__budget-total">$2,400 <span>/ $3,000</span></div>
+          <div class="dash-card__bars" id="budgetBars"></div>
+        </div>
+
+        <div class="dash-card glass-card reveal" style="--d:0.1s">
+          <div class="dash-card__label">Trip Duration</div>
+          <div class="dash-card__dur-num">7</div>
+          <div class="dash-card__dur-sub">Days & Nights</div>
+          <div class="dash-card__dur-meta">Jun 15 → Jun 22, 2025</div>
+          <div class="dash-card__dur-bar">
+            <div class="dash-card__dur-fill" style="width:0%" data-target="75%"></div>
+          </div>
+        </div>
+
+        <div class="dash-card glass-card reveal" style="--d:0.2s">
+          <div class="dash-card__label">Weather Forecast</div>
+          <div class="dash-card__weather" id="weatherGrid"></div>
+        </div>
+
+        <div class="dash-card glass-card reveal" style="--d:0.3s">
+          <div class="dash-card__label">Pre-Trip Checklist</div>
+          <ul class="dash-checklist" id="dashChecklist">
+            <li class="checklist-item checked" data-id="1"><span class="chk">✓</span>Book flights</li>
+            <li class="checklist-item checked" data-id="2"><span class="chk">✓</span>Reserve hotel</li>
+            <li class="checklist-item" data-id="3"><span class="chk"></span>Travel insurance</li>
+            <li class="checklist-item" data-id="4"><span class="chk"></span>Apply for visa</li>
+            <li class="checklist-item" data-id="5"><span class="chk"></span>Pack essentials</li>
+            <li class="checklist-item" data-id="6"><span class="chk"></span>Offline maps</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ CTA ══════════════════════ -->
+  <section class="cta" id="cta">
+    <div class="cta__orb cta__orb--1"></div>
+    <div class="cta__orb cta__orb--2"></div>
+    <div class="cta__orb cta__orb--3"></div>
+    <div class="cta__inner">
+      <div class="section-tag reveal" style="margin: 0 auto 1.5rem">Begin Your Yātrā</div>
+      <h2 class="cta__title reveal">Your Next Adventure<br/>Is One Breath Away</h2>
+      <p class="cta__sub reveal">Join 12,000+ travelers who've discovered smarter, richer, more meaningful journeys.</p>
+      <div class="cta__btns reveal">
+        <button class="cta__btn cta__btn--primary" id="ctaGenerate">Generate My Dream Trip</button>
+        <button class="cta__btn cta__btn--ghost">Watch a Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span class="nav__logo-symbol">✦</span>
+          <span class="nav__logo-name">Yātrā<em>AI</em></span>
+        </div>
+        <p class="footer__tagline">Intelligent travel for the curious soul.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="#planner">AI Planner</a>
+          <a href="#destinations">Destinations</a>
+          <a href="#discover">Discover</a>
+          <a href="#dashboard">Dashboard</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer__col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 Yātrā AI. Crafted with ✦ and wanderlust.</p>
+      <p class="footer__deva">यात्रा — The Sacred Journey</p>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════ CHATBOT ══════════════════════ -->
+  <div class="bot" id="bot">
+    <!-- Toggle button -->
+    <button class="bot__btn" id="botBtn" aria-label="Open AI assistant">
+      <span class="bot__btn-icon bot__btn-icon--open">✦</span>
+      <span class="bot__btn-icon bot__btn-icon--close" style="display:none">×</span>
+      <div class="bot__ring bot__ring--1"></div>
+      <div class="bot__ring bot__ring--2"></div>
+    </button>
+
+    <!-- Chat panel -->
+    <div class="bot__panel glass-card" id="botPanel">
+      <div class="bot__panel-header">
+        <div class="bot__panel-avatar">✦</div>
+        <div class="bot__panel-info">
+          <div class="bot__panel-name">Yātrā AI</div>
+          <div class="bot__panel-status"><span class="status-dot"></span>Always here for you</div>
+        </div>
+        <button class="bot__close" id="botClose" aria-label="Close">×</button>
+      </div>
+
+      <div class="bot__messages" id="botMessages">
+        <div class="bot__msg bot__msg--ai">
+          <p>Namaste! ✦ I'm your Yātrā AI travel companion. Ask me about destinations, budgets, visa requirements, or the best time to visit anywhere in the world.</p>
+        </div>
+        <div class="bot__quick-btns" id="botQuickBtns">
+          <button class="bot__quick">Best time for Bali? 🌴</button>
+          <button class="bot__quick">Budget for Europe? 💶</button>
+          <button class="bot__quick">Visa for Japan? 🇯🇵</button>
+          <button class="bot__quick">Hidden gems? 💎</button>
+        </div>
+      </div>
+
+      <div class="bot__input-row">
+        <input type="text" class="bot__input" id="botInput" placeholder="Ask anything about travel..." />
+        <button class="bot__send" id="botSend" aria-label="Send">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8l12-6-5 6 5 6-12-6z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading overlay for generate -->
+  <div class="gen-overlay" id="genOverlay">
+    <div class="gen-overlay__inner">
+      <div class="gen-overlay__logo">✦</div>
+      <div class="gen-overlay__title">Crafting your journey...</div>
+      <div class="gen-overlay__bar"><div class="gen-overlay__fill" id="genOverlayFill"></div></div>
+      <div class="gen-overlay__hint" id="genOverlayHint">Analyzing preferences...</div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

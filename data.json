@@ -1,0 +1,270 @@
+{
+  "destinations": [
+    {
+      "id": 1,
+      "name": "Santorini",
+      "country": "Greece",
+      "rating": 4.9,
+      "price": 2400,
+      "tag": "Romantic",
+      "tagColor": "#ff6b9d",
+      "description": "Iconic white-washed cliffs, deep blue domes, and the finest sunsets on Earth.",
+      "image": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80",
+      "temp": "26°C",
+      "duration": "5-7 days",
+      "highlights": ["Oia Sunset", "Volcano Hike", "Wine Tasting", "Black Sand Beaches"]
+    },
+    {
+      "id": 2,
+      "name": "Kyoto",
+      "country": "Japan",
+      "rating": 4.8,
+      "price": 3100,
+      "tag": "Cultural",
+      "tagColor": "#f59e0b",
+      "description": "Ancient temples, cherry blossoms, and timeless traditions in every corner.",
+      "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80",
+      "temp": "18°C",
+      "duration": "7-10 days",
+      "highlights": ["Fushimi Inari", "Arashiyama", "Tea Ceremony", "Geisha District"]
+    },
+    {
+      "id": 3,
+      "name": "Patagonia",
+      "country": "Argentina",
+      "rating": 4.7,
+      "price": 2800,
+      "tag": "Adventure",
+      "tagColor": "#10b981",
+      "description": "Dramatic glaciers, jagged peaks, and untouched wilderness at the edge of the world.",
+      "image": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80",
+      "temp": "8°C",
+      "duration": "10-14 days",
+      "highlights": ["Torres del Paine", "Perito Moreno Glacier", "Trekking", "Wildlife Safari"]
+    },
+    {
+      "id": 4,
+      "name": "Maldives",
+      "country": "Indian Ocean",
+      "rating": 4.9,
+      "price": 4200,
+      "tag": "Luxury",
+      "tagColor": "#6366f1",
+      "description": "Crystal lagoons, overwater bungalows, and a paradise that defies imagination.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
+      "temp": "30°C",
+      "duration": "5-8 days",
+      "highlights": ["Overwater Villa", "Snorkeling", "Dolphin Cruise", "Spa Retreat"]
+    },
+    {
+      "id": 5,
+      "name": "Marrakech",
+      "country": "Morocco",
+      "rating": 4.6,
+      "price": 1600,
+      "tag": "Exotic",
+      "tagColor": "#ef4444",
+      "description": "A sensory explosion of spices, souks, and labyrinthine medinas full of wonder.",
+      "image": "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6b?w=600&q=80",
+      "temp": "24°C",
+      "duration": "4-6 days",
+      "highlights": ["Jemaa el-Fna", "Majorelle Garden", "Sahara Day Trip", "Hammam Ritual"]
+    },
+    {
+      "id": 6,
+      "name": "Amalfi Coast",
+      "country": "Italy",
+      "rating": 4.8,
+      "price": 2900,
+      "tag": "Scenic",
+      "tagColor": "#06b6d4",
+      "description": "Pastel villages clinging to cliffsides, lemon groves, and Mediterranean magic.",
+      "image": "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80",
+      "temp": "24°C",
+      "duration": "5-7 days",
+      "highlights": ["Positano", "Ravello Villa Cimbrone", "Boat Tour", "Limoncello Trail"]
+    }
+  ],
+  "interests": [
+    { "id": "adventure", "label": "Adventure", "icon": "🧗" },
+    { "id": "culture", "label": "Culture", "icon": "🏛️" },
+    { "id": "food", "label": "Food & Wine", "icon": "🍷" },
+    { "id": "beach", "label": "Beaches", "icon": "🏖️" },
+    { "id": "nature", "label": "Nature", "icon": "🌿" },
+    { "id": "luxury", "label": "Luxury", "icon": "💎" },
+    { "id": "history", "label": "History", "icon": "🏺" },
+    { "id": "photography", "label": "Photography", "icon": "📸" },
+    { "id": "wellness", "label": "Wellness", "icon": "🧘" },
+    { "id": "nightlife", "label": "Nightlife", "icon": "🌙" }
+  ],
+  "sampleItinerary": {
+    "destination": "Santorini, Greece",
+    "days": [
+      {
+        "day": 1,
+        "title": "Arrival & Oia Exploration",
+        "theme": "Discovery",
+        "activities": [
+          {
+            "time": "14:00",
+            "title": "Arrive at Santorini Airport",
+            "type": "transport",
+            "icon": "✈️",
+            "duration": "1h",
+            "description": "Collect luggage and transfer to your clifftop hotel in Oia.",
+            "cost": 45
+          },
+          {
+            "time": "16:00",
+            "title": "Check-in at Canaves Oia Suites",
+            "type": "hotel",
+            "icon": "🏨",
+            "duration": "1h",
+            "description": "Settle into your cave suite with stunning caldera views.",
+            "cost": 0
+          },
+          {
+            "time": "18:30",
+            "title": "Oia Sunset Walk",
+            "type": "sightseeing",
+            "icon": "🌅",
+            "duration": "2h",
+            "description": "Stroll through narrow cobblestone paths to the famous castle ruins for the world's best sunset.",
+            "cost": 0
+          },
+          {
+            "time": "21:00",
+            "title": "Dinner at Lauda Restaurant",
+            "type": "dining",
+            "icon": "🍽️",
+            "duration": "2h",
+            "description": "Michelin-starred seafood with panoramic caldera views.",
+            "cost": 120
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "title": "Volcano & Thermal Springs",
+        "theme": "Adventure",
+        "activities": [
+          {
+            "time": "09:00",
+            "title": "Volcano Hiking Tour",
+            "type": "adventure",
+            "icon": "🌋",
+            "duration": "3h",
+            "description": "Guided hike across the ancient Nea Kameni volcano — lunar landscape, sulfuric vents.",
+            "cost": 65
+          },
+          {
+            "time": "13:00",
+            "title": "Palea Kameni Thermal Springs",
+            "type": "wellness",
+            "icon": "♨️",
+            "duration": "1.5h",
+            "description": "Swim in warm mineral waters surrounded by the Aegean sea.",
+            "cost": 20
+          },
+          {
+            "time": "15:30",
+            "title": "Fira Town Exploration",
+            "type": "culture",
+            "icon": "🏛️",
+            "duration": "2h",
+            "description": "Explore the cosmopolitan capital — museums, galleries, and boutique shopping.",
+            "cost": 30
+          },
+          {
+            "time": "20:00",
+            "title": "Wine Tasting at Santo Wines",
+            "type": "dining",
+            "icon": "🍷",
+            "duration": "2h",
+            "description": "Sample indigenous Assyrtiko wines with a stunning sunset backdrop.",
+            "cost": 55
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "title": "Black Beach & Local Life",
+        "theme": "Relaxation",
+        "activities": [
+          {
+            "time": "10:00",
+            "title": "Perissa Black Sand Beach",
+            "type": "beach",
+            "icon": "🏖️",
+            "duration": "3h",
+            "description": "Relax on unique volcanic black sand beaches with crystal-clear waters.",
+            "cost": 0
+          },
+          {
+            "time": "13:30",
+            "title": "Lunch at Metaxy Mas",
+            "type": "dining",
+            "icon": "🥗",
+            "duration": "1.5h",
+            "description": "Authentic Greek cuisine — fresh seafood, fava, and tomato fritters.",
+            "cost": 45
+          },
+          {
+            "time": "16:00",
+            "title": "Ancient Thera Ruins",
+            "type": "history",
+            "icon": "🏺",
+            "duration": "2h",
+            "description": "Visit the 3,600-year-old Minoan ruins of Akrotiri — the 'Pompeii of the Aegean'.",
+            "cost": 14
+          },
+          {
+            "time": "20:30",
+            "title": "Farewell Dinner in Fira",
+            "type": "dining",
+            "icon": "🌃",
+            "duration": "2h",
+            "description": "Last night dinner under the stars with live Greek music.",
+            "cost": 85
+          }
+        ]
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "id": 1,
+      "title": "Hidden Gem: Faroe Islands",
+      "reason": "Because you love dramatic landscapes",
+      "match": 97,
+      "tags": ["Remote", "Dramatic", "Photography"],
+      "image": "https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?w=400&q=80"
+    },
+    {
+      "id": 2,
+      "title": "Luang Prabang, Laos",
+      "reason": "Because you enjoy cultural immersion",
+      "match": 94,
+      "tags": ["Buddhist", "Riverside", "Temples"],
+      "image": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80"
+    },
+    {
+      "id": 3,
+      "title": "Azores, Portugal",
+      "reason": "Because you seek off-the-beaten-path",
+      "match": 91,
+      "tags": ["Volcanic", "Whale Watching", "Hot Springs"],
+      "image": "https://images.unsplash.com/photo-1527004013197-933b4bb7a537?w=400&q=80"
+    }
+  ],
+  "weather": {
+    "destination": "Santorini",
+    "forecast": [
+      { "day": "Mon", "icon": "☀️", "high": 28, "low": 20 },
+      { "day": "Tue", "icon": "⛅", "high": 26, "low": 19 },
+      { "day": "Wed", "icon": "☀️", "high": 29, "low": 21 },
+      { "day": "Thu", "icon": "🌤️", "high": 27, "low": 20 },
+      { "day": "Fri", "icon": "☀️", "high": 30, "low": 22 }
+    ]
+  }
+}
