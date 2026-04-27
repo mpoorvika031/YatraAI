@@ -10,7 +10,7 @@ Built for **Frontend Frenzy**, this project focuses on **creative UI/UX design**
 
 ## 🌍 Live Demo
 
-🔗 https://mpoorvikao31.github.io/yatra-ai/
+🔗 https://mpoorvika031.github.io/yatra-ai/
 
 ---
 
